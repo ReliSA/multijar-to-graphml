@@ -7,7 +7,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashSet;
 
 /**
- * Created by Viktor on 14.5.2016.
+ * Created by Viktor Vašina on 14.5.2016.
+ *
+ * Java Class entity for Graphml serialization.
  */
 
 @XmlRootElement(name = "node")
@@ -16,26 +18,34 @@ public class Class extends HierarchyMember {
     @XmlElement(name="graph")
     private ClassContent classContent = new ClassContent();
 
-    public ClassContent getClassContent() {
-        return classContent;
-    }
-
-    public void setClassContent(ClassContent classContent) {
-        this.classContent = classContent;
-    }
-
+    /**
+     * Returns Set of class fields.
+     * @return class fields
+     */
     public HashSet<Field> getFields() {
         return classContent.getFields();
     }
 
+    /**
+     * Set class fields.
+     * @param fields new class fields
+     */
     public void setFields(HashSet<Field> fields) {
         classContent.setFields(fields);
     }
 
+    /**
+     * Returns Set of class methods.
+     * @return class methods
+     */
     public HashSet<Method> getMethods() {
         return classContent.getMethods();
     }
 
+    /**
+     * Set new class methods.
+     * @param methods new class methods
+     */
     public void setMethods(HashSet<Method> methods) {
         classContent.setMethods(methods);
     }
