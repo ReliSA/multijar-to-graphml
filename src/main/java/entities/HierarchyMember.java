@@ -30,6 +30,12 @@ public class HierarchyMember {
     protected Data name = new Data("nodeName", "");
 
     /**
+     * Data element for any node, provides name attribute to node.
+     */
+    @XmlElement(name="data")
+    protected Data type = new Data("nodeType", "");
+
+    /**
      * Returns node id.
      * @return node id
      */

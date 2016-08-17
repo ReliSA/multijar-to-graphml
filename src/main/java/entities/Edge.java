@@ -24,6 +24,7 @@ public class Edge extends HierarchyMember{
     public Edge()
     {
         name = null;
+        type = null;
     }
 
     /**

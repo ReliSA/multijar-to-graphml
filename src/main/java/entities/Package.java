@@ -12,6 +12,12 @@ import java.util.HashSet;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Package extends HierarchyMember {
 
+    public Package()
+    {
+        super();
+        this.type.setValue(NodeTypes.PACKAGE.name());
+    }
+
     @XmlElement(name="graph")
     private PackageContent packageContent = new PackageContent();
 

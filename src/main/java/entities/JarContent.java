@@ -14,6 +14,11 @@ import java.util.HashSet;
 @XmlAccessorType(XmlAccessType.FIELD)
 class JarContent extends HierarchyMember {
 
+    JarContent(){
+        name = null;
+        type = null;
+    }
+
     /**
      * Sets edges in GraphML as directed.
      */

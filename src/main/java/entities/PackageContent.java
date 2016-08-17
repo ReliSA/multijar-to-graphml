@@ -13,6 +13,11 @@ import java.util.HashSet;
 @XmlAccessorType(XmlAccessType.FIELD)
 class PackageContent extends HierarchyMember {
 
+    PackageContent(){
+        name = null;
+        type = null;
+    }
+
     /**
      * Sets edges in GraphML as directed.
      */

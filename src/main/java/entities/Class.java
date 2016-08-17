@@ -18,6 +18,12 @@ public class Class extends HierarchyMember {
     @XmlElement(name="graph")
     private ClassContent classContent = new ClassContent();
 
+    public Class()
+    {
+        super();
+        this.type.setValue(NodeTypes.CLASS.name());
+    }
+
     /**
      * Returns Set of class fields.
      * @return class fields

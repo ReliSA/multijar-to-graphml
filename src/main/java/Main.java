@@ -15,6 +15,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        if(args.length < 2){
+            System.out.println("No source directory or output file specified. Usage: <program> <directory-for-scan> <output-file>");
+        }
 
         //get all jars in directory
         Collection<File> files = Utils.listFiles(new File(args[0]), new FilenameFilter() {

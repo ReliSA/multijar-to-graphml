@@ -10,6 +10,12 @@ import java.util.HashSet;
  * Helper Class for serializing Class entity as nested graph in Graphml.
  */
 class ClassContent extends HierarchyMember{
+
+    ClassContent(){
+        name = null;
+        type = null;
+    }
+
     /**
      * Sets edges in GraphML as directed.
      */

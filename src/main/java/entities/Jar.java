@@ -12,6 +12,12 @@ import java.util.HashSet;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Jar extends HierarchyMember {
 
+    public Jar()
+    {
+        super();
+        this.type.setValue(NodeTypes.JAR.name());
+    }
+
     @XmlElement(name = "graph")
     private JarContent jarContent = new JarContent();
 
@@ -40,7 +46,7 @@ public class Jar extends HierarchyMember {
     }
 
     /**
-     * Set new rooot packages in jar.
+     * Set new root packages in jar.
      * @param packages new root packages
      */
     public void setPackages(HashSet<Package> packages) {

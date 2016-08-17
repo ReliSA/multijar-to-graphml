@@ -6,4 +6,9 @@ package entities;
  * Class field entity for GraphML serialization.
  */
 public class Field extends HierarchyMember {
+    public Field()
+    {
+        super();
+        this.type.setValue(NodeTypes.FIELD.name());
+    }
 }

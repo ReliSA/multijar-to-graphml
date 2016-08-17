@@ -6,4 +6,9 @@ package entities;
  * Class method entity for GraphML serialization.
  */
 public class Method extends HierarchyMember {
+    public Method()
+    {
+        super();
+        this.type.setValue(NodeTypes.METHOD.name());
+    }
 }

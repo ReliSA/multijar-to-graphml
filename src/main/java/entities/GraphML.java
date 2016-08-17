@@ -37,17 +37,25 @@ public class GraphML {
     /**
      * Default constructor.
      *
-     * Automatically creates nodeName key in GraphML structure for naming nodes.
+     * Automatically creates nodeName and nodeType key in GraphML structure for naming nodes.
      */
     public GraphML()
     {
         keys = new HashSet<Key>();
-        Key tmp = new Key();
-        tmp.setId("nodeName");
-        tmp.setFor("node");
-        tmp.setType("string");
-        tmp.setName("name");
-        keys.add(tmp);
+        Key name = new Key();
+        name.setId("nodeName");
+        name.setFor("node");
+        name.setType("string");
+        name.setName("name");
+
+        Key type = new Key();
+        type.setId("nodeType");
+        type.setFor("node");
+        type.setType("string");
+        type.setName("type");
+
+        keys.add(name);
+        keys.add(type);
     }
 
 
