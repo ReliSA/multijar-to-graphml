@@ -70,8 +70,9 @@ public class Utils {
      * @param jar insert hierarchy and add it to this jar
      * @param c class to by parsed and inserted
      * @param unknown if true, all node ids will start with jar set as: unknown
+     * @param includeMethodsFields if true class methods and fields are also included in structure
      */
-    public static void insertHierarchy(HashMap<String, HashSet<HierarchyMember>> exportDict, Jar jar, JClass c, boolean unknown){
+    public static void insertHierarchy(HashMap<String, HashSet<HierarchyMember>> exportDict, Jar jar, JClass c, boolean unknown, boolean includeMethodsFields){
 
         HashSet<HierarchyMember> emptyHelper = new HashSet<HierarchyMember>();
 
@@ -124,20 +125,23 @@ public class Utils {
         cl.setId(p.getId() + "." + path[path.length - 1]);
         cl.setShortName(p.getShortName() + "." + path[path.length - 1]);
 
-        for (JField f : c.getFields()) {
-            Field newField = new Field();
-            newField.setId(cl.getId() + "." + f.getName());
-            newField.setShortName(cl.getShortName() + "." + f.getName());
-            cl.getFields().add(newField);
-            Utils.insertMember(exportDict, newField);
+        if(includeMethodsFields){
+            for (JField f : c.getFields()) {
+                Field newField = new Field();
+                newField.setId(cl.getId() + "." + f.getName());
+                newField.setShortName(cl.getShortName() + "." + f.getName());
+                cl.getFields().add(newField);
+                Utils.insertMember(exportDict, newField);
+            }
+            for (JMethod m : c.getMethods()) {
+                Method newMethod = new Method();
+                newMethod.setId(cl.getId() + "." + m.getName());
+                newMethod.setShortName(cl.getShortName() + "." + m.getName());
+                cl.getMethods().add(newMethod);
+                Utils.insertMember(exportDict, newMethod);
+            }
         }
-        for (JMethod m : c.getMethods()) {
-            Method newMethod = new Method();
-            newMethod.setId(cl.getId() + "." + m.getName());
-            newMethod.setShortName(cl.getShortName() + "." + m.getName());
-            cl.getMethods().add(newMethod);
-            Utils.insertMember(exportDict, newMethod);
-        }
+        
         p.getClasses().add(cl);
         Utils.insertMember(exportDict, cl);
     }

@@ -16,7 +16,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         if(args.length < 2){
-            System.out.println("No source directory or output file specified. Usage: <program> <directory-for-scan> <output-file>");
+            System.out.println("No source directory or output file specified. Usage: <program> <directory-for-scan> [-classContent] <output-file>");
+        }
+
+        boolean includeClassContent = false;
+
+        if(args.length == 3){
+            if(args[1].equals("-classContent"))
+                includeClassContent = true;
         }
 
         //get all jars in directory
@@ -47,7 +54,7 @@ public class Main {
             gml.getRoot().getJars().add(jar);
 
             for (JClass c : exports) {
-                Utils.insertHierarchy(exportDict, jar, c, false);
+                Utils.insertHierarchy(exportDict, jar, c, false, includeClassContent);
             }
         }
 
@@ -71,10 +78,10 @@ public class Main {
             for (JClass c : imports) {
                 for (ImporterTuple i : c.getImportedBy()) {
                     if (!exportDict.containsKey(i.getImportingClass().getName())) {
-                        Utils.insertHierarchy(exportDict, unknownJar, i.getImportingClass(), true);
+                        Utils.insertHierarchy(exportDict, unknownJar, i.getImportingClass(), true, includeClassContent);
                     }
                     if (!exportDict.containsKey(c.getName())) {
-                        Utils.insertHierarchy(exportDict, unknownJar, c, true);
+                        Utils.insertHierarchy(exportDict, unknownJar, c, true, includeClassContent);
                     }
                     for (HierarchyMember from : exportDict.get(i.getImportingClass().getName())) {
                         for (HierarchyMember to : exportDict.get(c.getName())) {
@@ -95,7 +102,7 @@ public class Main {
 
         //serialize whole structure
         try {
-            File file = new File(args[1]);
+            File file = new File(args[args.length-1]);
             JAXBContext jaxbContext = JAXBContext.newInstance(GraphML.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
