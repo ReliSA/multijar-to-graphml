@@ -3,7 +3,7 @@ Simple tool to generate dependency graph data from multiple JAR components.
 
 Result can be visualized or parsed and searched for dependency problems between JAR components.
 
-Tool created as student project on [The Faculty of Applied Sciences](www.fav.cz) in Pilsen.
+Tool created as student project on [The Faculty of Applied Sciences](http://fav.zcu.cz) in Pilsen.
 
 ## Graph representation
 For representation of dependency graph is used [GraphML](http://graphml.graphdrawing.org/primer/graphml-primer.html) format. [GraphML](http://graphml.graphdrawing.org/primer/graphml-primer.html) is XML based format for graph representation with following features:
@@ -42,7 +42,7 @@ GraphML part for example structure:
       - ExampleClass (CLASS)
 
 ### Structure
-For nesting purposes all jars, packages and classes are [GraphML subgraphs](graphml.graphdrawing.org/primer/graphml-primer.html#NHP). Only methods and fields are simple nodes.
+For nesting purposes all jars, packages and classes are [GraphML subgraphs](http://graphml.graphdrawing.org/primer/graphml-primer.html#NHP). Only methods and fields are simple nodes.
 
 Every member of structure has some attributes:
 - **id** - unique identifier for connecting edges
@@ -57,7 +57,7 @@ In every output is created **unknown** JAR. It is used when source or target poi
 - when class imports some unknown source
 
 
-Thanks to XML base there are parsers and tools for visualization of GrapML data. For example [yEd](www.yworks.com/products/yed)
+Thanks to XML base there are parsers and tools for visualization of GrapML data. For example [yEd](http://www.yworks.com/products/yed)
 
 ## Build
 Project is built with maven. To create runnable JAR with dependencies run:
